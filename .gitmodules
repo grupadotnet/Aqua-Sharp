@@ -1,0 +1,6 @@
+[submodule "Aqua-Sharp-Frontend"]
+	path = Aqua-Sharp-Frontend
+	url = https://github.com/grupadotnet/Aqua-Sharp-Frontend.git
+[submodule "Aqua-Sharp-Backend"]
+	path = Aqua-Sharp-Backend
+	url = https://github.com/grupadotnet/Aqua-Sharp-Backend.git
