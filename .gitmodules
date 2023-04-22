@@ -4,3 +4,6 @@
 [submodule "Aqua-Sharp-Backend"]
 	path = Aqua-Sharp-Backend
 	url = https://github.com/grupadotnet/Aqua-Sharp-Backend.git
+[submodule "Aqua-Sharp-Embeded"]
+	path = Aqua-Sharp-Embeded
+	url = https://github.com/grupadotnet/Aqua-Sharp-Embeded.git
