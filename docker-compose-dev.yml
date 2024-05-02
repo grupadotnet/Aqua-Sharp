@@ -3,18 +3,6 @@ networks:
     external: true
 
 services:
-  aqua-sharp:
-    container_name: aqua-sharp
-    image: aqua-sharp-backend:latest
-    restart: unless-stopped
-    ports:
-      - 80:80
-    networks:
-      - aqua-sharp
-    depends_on:
-      - eclipse-mosquitto
-      - database
-
   eclipse-mosquitto:
     container_name: mosquitto
     image: docker.io/eclipse-mosquitto
