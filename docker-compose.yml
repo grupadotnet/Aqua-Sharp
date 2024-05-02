@@ -1,6 +1,22 @@
-version: "3"
+networks:
+  aqua-sharp:
+    external: true
+
 services:
+  aqua-sharp:
+    container_name: aqua-sharp
+    image: aqua-sharp-backend:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - aqua-sharp
+    depends_on:
+      - eclipse-mosquitto
+      - database
+
   eclipse-mosquitto:
+    container_name: mosquitto
     image: docker.io/eclipse-mosquitto
     restart: unless-stopped
     ports:
@@ -10,6 +26,8 @@ services:
       - /mosquitto/data
       - /mosquitto/log
       - ./conf:/mosquitto/config
+    networks:
+      - aqua-sharp
 
   database:
     container_name: mssql
@@ -22,3 +40,5 @@ services:
       - MSSQL_SA_PASSWORD=FkbpXP55&Tm2gh5b
     volumes:
       - ./data:/var/opt/mssql/data
+    networks:
+      - aqua-sharp
