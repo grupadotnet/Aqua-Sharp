@@ -1,0 +1,29 @@
+networks:
+  aqua-sharp:
+    external: true
+
+services:
+  aqua-sharp:
+    container_name: aqua-sharp
+    image: gromat/aqua-sharp-backend:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - aqua-sharp
+    depends_on:
+      - eclipse-mosquitto
+
+  eclipse-mosquitto:
+    container_name: mosquitto
+    image: docker.io/eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - /mosquitto/data
+      - /mosquitto/log
+      - ./conf:/mosquitto/config
+    networks:
+      - aqua-sharp
