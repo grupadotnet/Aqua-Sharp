@@ -3,8 +3,20 @@ networks:
     external: true
 
 services:
-  aqua-sharp:
-    container_name: aqua-sharp
+  aqua-sharp-frontend:
+    container_name: aqua-sharp-frontend
+    image: gromat/aqua-sharp-frontend:latest
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    networks:
+      - aqua-sharp
+    depends_on:
+      - eclipse-mosquitto
+      - aqua-sharp-backend
+
+  aqua-sharp-backend:
+    container_name: aqua-sharp-backend
     image: gromat/aqua-sharp-backend:latest
     restart: unless-stopped
     ports:
